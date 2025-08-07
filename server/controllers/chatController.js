@@ -107,6 +107,9 @@ class ChatController {
         };
         chat.messages.push(assistantMessage);
         await chat.save();
+        
+        // --- YE LINE MAINE ADD KI HAI ---
+        io.to(`user_${req.user.id}`).emit('newMessage', assistantMessage);
       }
 
     } catch (error) {
